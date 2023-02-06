@@ -16,11 +16,12 @@ const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Connected to MongoDB local database'));
 
-// https://www.youtube.com/watch?v=fgTGADljAeg
-// 6:52
+
 
 //requests
-const studentsRouter = re
+const studentsRouter = require('./routes/students');
+app.use('/students', studentsRouter)
+
 
 // listen
 app.listen(server_port, () => {
