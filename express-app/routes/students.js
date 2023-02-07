@@ -15,8 +15,9 @@ router.get('/', async (req, res) => {
 })
 
 // get one
-router.get('/:id', (req, res) => {
+router.get('/:id', getStudent, (req, res) => {
 
+    res.send(res.student);
 })
 
 // create one
@@ -39,15 +40,56 @@ router.post('/', async (req, res) => {
 
 
 // update one
-router.patch('/', (req, res) => {
+router.patch('/:id', getStudent, async (req, res) => {
 
+    if (req.body.name != null) {
+        res.student.name = req.body.name;
+    }
+
+    if (req.body.faculty_number != null) {
+        res.student.faculty_number = req.body.faculty_number;
+    }
+
+    if (req.body.email != null) {
+        res.student.email = req.body.email;
+    }
+
+    try {
+        const updatedStudent = await res.student.save();
+        res.json(updatedStudent);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 })
 
 
 // delete one
-router.delete('/', (req, res) => {
+router.delete('/:id', getStudent, async (req, res) => {
+
+    try {
+        await res.student.remove();
+        res.json({ message: 'Deleted Student' })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
 
 })
+
+
+async function getStudent(req, res, next) {
+
+    try {
+        student = await Student.findById(req.params.id);
+        if (student == null) {
+            return res.status(404).json({ message: 'Cannot find Student' })                   // 404 student not found
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message })                               // 500 server error
+    }
+
+    res.student = student;
+    next();
+}
 
 
 module.exports = router
