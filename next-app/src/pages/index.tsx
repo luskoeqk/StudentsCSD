@@ -16,9 +16,14 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className={styles.MainWrapper}>
+            <main className=''>
+                
                 <div className=''>
-
+                    <h1>Main </h1>
+                    <h1>Main </h1>
+                    <h1>Main </h1>
+                    <h1>Main </h1>
+                    <h1>MainMainMainMainMainMainMain </h1>
                 </div>
             </main>
         </>
