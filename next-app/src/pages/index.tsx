@@ -6,9 +6,14 @@ import React from 'react';
 
 // components
 import SignIn from '@/components/SignIn'
+import { initFirebase } from '../../firebase/firebase';
 
 
 export default function Home() {
+
+    const app = initFirebase();
+    console.log(app);
+
     return (
         <>
             <Head>
