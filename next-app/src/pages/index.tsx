@@ -1,9 +1,11 @@
 // next
 import Head from 'next/head'
-
+import React from 'react';
 
 // styles
-import styles from '../styles/index.module.scss'
+
+// components
+import SignIn from '@/components/SignIn'
 
 
 export default function Home() {
@@ -16,14 +18,9 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className=''>
-                
+            <main>
                 <div className=''>
-                    <h1>Main </h1>
-                    <h1>Main </h1>
-                    <h1>Main </h1>
-                    <h1>Main </h1>
-                    <h1>MainMainMainMainMainMainMain </h1>
+                    <SignIn />
                 </div>
             </main>
         </>

@@ -1,9 +1,11 @@
 
+import { HeaderWrapper } from "@/styles/LayoutElements"
 
 export default function Header() {
 
     return (
-
-        <h1>Header</h1>
+        <HeaderWrapper>
+            <h1>Header</h1>
+        </HeaderWrapper>
     )
 }
