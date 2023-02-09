@@ -1,3 +1,7 @@
+// next
+// import { useState } from 'react';
+
+// Material UI
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -11,19 +15,37 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// firebase
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, app } from '../../firebase/firebase';
+
 
 const theme = createTheme();
 
+
 export default function SignIn() {
 
+    // const [email, setEmail] = useState<String>('');
+    // const [passwor, setPassword] = useState<String>('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+
+        const email = data.get('email');
+        const password = data.get('password');
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
     };
 
 
