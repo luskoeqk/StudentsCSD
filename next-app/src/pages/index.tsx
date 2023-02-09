@@ -12,7 +12,6 @@ import { initFirebase } from '../../firebase/firebase';
 export default function Home() {
 
     const app = initFirebase();
-    console.log(app);
 
     return (
         <>
