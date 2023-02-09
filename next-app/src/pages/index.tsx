@@ -2,11 +2,6 @@
 import Head from 'next/head'
 import React from 'react';
 
-// styles
-
-// components
-import SignIn from '@/components/SignIn'
-
 
 export default function Home() {
 
@@ -22,7 +17,7 @@ export default function Home() {
 
             <main>
                 <div className=''>
-                    <SignIn />
+                    <h1>index</h1>
                 </div>
             </main>
         </>
