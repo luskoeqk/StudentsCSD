@@ -6,9 +6,15 @@ import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebas
 import { auth } from "../../firebase/firebase";
 
 
-const AuthContext = createContext<any>({});
+interface IAuthContext {
 
-export const useAuth = () => useContext(AuthContext);
+    user: Object;
+    logIn: () => void;
+    logOut: () => void;
+}
+
+
+const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 
 export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
@@ -29,19 +35,39 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
         return () => unsubscribe();
     }, [])
 
-    const login = (email: any, password: any) => {
-        return console.table(email, password)
-        // return signInWithEmailAndPassword(auth, email, password)
+    const logIn = () => {
+
+        return console.log('login');
     }
 
     const logOut = async () => {
+        console.log('logOut');
         setUser(null);
         await signOut(auth);
     };
 
+
+    const state: IAuthContext = {
+        user,
+        logIn,
+        logOut
+    }
+
     return (
-        <AuthContext.Provider value={{ user, login, logOut }}>
+        <AuthContext.Provider value={state}>
             {loading ? null : children}
         </AuthContext.Provider>
     )
+}
+
+
+export function useAuth() {
+
+    const context = useContext(AuthContext);
+
+    if (!context) {
+        throw new Error('useAuth must be used within a AuthProvider');
+    }
+
+    return context;
 }

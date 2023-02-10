@@ -31,18 +31,18 @@ const theme = createTheme();
 
 export default function SignIn() {
 
-    const { user, login } = useAuth();
+    const { user, logIn } = useAuth();
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         try {
-            console.table(login(email, password))
-            // await login(email, password);
+            logIn();
+            // console.table(login(email, password))
         } catch (err) {
             console.log('err', err);
             // setError(err);
