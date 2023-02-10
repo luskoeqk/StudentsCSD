@@ -14,8 +14,8 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useState, useEffect } from 'react';
 import Router, { withRouter } from 'next/router';
 
-
-
+// auth
+import { AuthContextProvider } from '@/context/AuthContext';
 
 
 
@@ -33,9 +33,11 @@ export default function App({ Component, pageProps, ...appProps }: AppProps) {
 
     return (
         <div>
-            <Header />
-            <Sidebar />
-            <Component {...pageProps} />
+            <AuthContextProvider>
+                <Header />
+                <Sidebar />
+                <Component {...pageProps} />
+            </AuthContextProvider>
         </div>
     )
 }

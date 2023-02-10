@@ -1,5 +1,6 @@
 // next
 import { useState } from 'react';
+import router from 'next/router';
 
 // Material UI
 import * as React from 'react';
@@ -16,12 +17,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // firebase
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase/firebase';
 
 // styles
 import { SingInWrapper } from '@/styles/SingInElements';
-import router from 'next/router';
+
+// auth
+import { useAuth } from '@/context/AuthContext';
 
 
 const theme = createTheme();
@@ -29,27 +31,37 @@ const theme = createTheme();
 
 export default function SignIn() {
 
+    const { user, login } = useAuth();
+
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log('logged in');
-                router.push('/')
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setError(errorMessage);
-                console.log('errorCode', errorCode)
-                console.log('errorMessage', errorMessage)
-            });
+        try {
+            console.table(login(email, password))
+            // await login(email, password);
+        } catch (err) {
+            console.log('err', err);
+            // setError(err);
+        }
+
+        // signInWithEmailAndPassword(auth, email, password)
+        //     .then((userCredential) => {
+        //         // Signed in 
+        //         const user = userCredential.user;
+        //         console.log('logged in');
+        //         router.push('/')
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         setError(errorMessage);
+        //         console.log('errorCode', errorCode)
+        //         console.log('errorMessage', errorMessage)
+        //     });
     };
 
 

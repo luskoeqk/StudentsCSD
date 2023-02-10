@@ -17,7 +17,7 @@ import { useState, useEffect } from 'react';
 export default function Header() {
 
     const [user, setUser] = useState<string | null>(null);
-
+        
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
