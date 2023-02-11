@@ -1,6 +1,5 @@
 // next
-import React, { useState } from 'react';
-import router from 'next/router';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 
 // Material UI
@@ -16,8 +15,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-// firebase
-import { auth } from '../../firebase/firebase';
 
 // styles
 import { SingInWrapper } from '@/styles/SingInElements';
@@ -31,12 +28,20 @@ const theme = createTheme();
 
 export default function SignIn() {
 
-    const { user, login } = useAuth();
+    const { user, login, isAuthenticated } = useAuth();
 
     const router = useRouter()
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+
+
+    useEffect(() => {
+        if (isAuthenticated()) {
+            router.push('/');
+        }
+    }, []);
+    
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()

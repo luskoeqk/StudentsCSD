@@ -28,10 +28,10 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((authUser) => {
-            if (authUser) {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
                 setUser({
-                    email: authUser.email,
+                    email: user.email,
                 });
             } else {
                 setUser(null);
@@ -41,6 +41,10 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
 
         return () => unsubscribe();
     }, []);
+
+    const isAuthenticated = () => {
+        return auth.currentUser !== null;
+    };
 
     const login = async (email: string, password: string) => {
         try {
@@ -58,7 +62,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
             {loading ? null : children}
         </AuthContext.Provider>
     );

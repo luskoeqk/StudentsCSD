@@ -9,10 +9,10 @@ export const LayoutWrapper = styled.div`
     flex-direction: column;
 `;
 
-export const HeaderWrapper = styled.div`
+export const SidebarStudentsHeader = styled.div`
 
-
-    `;
+    text-align: center;
+`;
 
 export const SidebarWrapper = styled.div`
     position: sticky; 
