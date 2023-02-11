@@ -15,29 +15,33 @@ import React, { useState, useEffect } from 'react';
 import Router, { withRouter } from 'next/router';
 
 // auth
-import { AuthContextProvider } from '@/context/AuthContext';
+import { AuthContextProvider } from '../context/AuthContext';
+import ProtectedRoute from '@/context/ProtectedRoutes';
+import ProtectedRouteLoggedIn from '@/context/ProtectedRouteLoggedIn';
 
+// component
+import SignIn from '@/components/SignIn';
 
 
 export default function App({ Component, pageProps, ...appProps }: AppProps) {
 
     if ([`/login`].includes(appProps.router.pathname)) {
         return (
-            <>
-                <h1>VUZF Students CSD</h1>
-                <Component {...pageProps} />
-            </>
+            <AuthContextProvider>
+                    <h1>VUZF Students CSD</h1>
+                    <SignIn/>
+            </AuthContextProvider>
         )
     }
 
 
     return (
-        <div>
-            <AuthContextProvider>
+        <AuthContextProvider>
+            <ProtectedRoute>
                 <Header />
                 <Sidebar />
                 <Component {...pageProps} />
-            </AuthContextProvider>
-        </div>
+            </ProtectedRoute>
+        </AuthContextProvider>
     )
 }

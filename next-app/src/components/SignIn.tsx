@@ -1,9 +1,9 @@
 // next
-import { useState } from 'react';
+import React, { useState } from 'react';
 import router from 'next/router';
+import { useRouter } from 'next/router'
 
 // Material UI
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -23,45 +23,34 @@ import { auth } from '../../firebase/firebase';
 import { SingInWrapper } from '@/styles/SingInElements';
 
 // auth
-import { useAuth } from '@/context/AuthContext';
-
+import { useAuth } from '../context/AuthContext';
 
 const theme = createTheme();
 
 
+
 export default function SignIn() {
 
-    const { user, logIn } = useAuth();
+    const { user, login } = useAuth();
+
+    const router = useRouter()
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [error, setError] = useState<string>('');
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
 
         try {
-            logIn();
-            // console.table(login(email, password))
+            const isLoginSuccessful = await login(email, password);
+            if (isLoginSuccessful) {
+                router.push('/dashboard');
+            }
         } catch (err) {
-            console.log('err', err);
-            // setError(err);
+            console.error(err);
         }
 
-        // signInWithEmailAndPassword(auth, email, password)
-        //     .then((userCredential) => {
-        //         // Signed in 
-        //         const user = userCredential.user;
-        //         console.log('logged in');
-        //         router.push('/')
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         const errorMessage = error.message;
-        //         setError(errorMessage);
-        //         console.log('errorCode', errorCode)
-        //         console.log('errorMessage', errorMessage)
-        //     });
+
     };
 
 
@@ -112,7 +101,6 @@ export default function SignIn() {
                                 control={<Checkbox value="remember" color="primary" />}
                                 label="Remember me"
                             />
-                            {<h3>{error}</h3>}
                             <Button
                                 type="submit"
                                 fullWidth
