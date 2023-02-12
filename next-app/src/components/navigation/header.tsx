@@ -58,7 +58,7 @@ export default function Header() {
                     >
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        ВУЗФ кск
+                        
                     </Typography>
                     <div color="inherit">Здравей, {user}</div>
                     <Button color="inherit"

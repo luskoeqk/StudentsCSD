@@ -2,6 +2,10 @@
 import Head from 'next/head'
 import React from 'react';
 
+// styles
+import { PageConfig } from '@/styles/PagesConfigElements';
+import Dashboard from '@/components/dashboard/dashboard';
+
 
 export default function Home() {
 
@@ -16,9 +20,10 @@ export default function Home() {
             </Head>
 
             <main>
-                <div className=''>
+                <PageConfig>
                     <h1>index</h1>
-                </div>
+                    <Dashboard />
+                </PageConfig>
             </main>
         </>
     )

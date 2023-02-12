@@ -49,7 +49,7 @@ export default function SignIn() {
         try {
             const isLoginSuccessful = await login(email, password);
             if (isLoginSuccessful) {
-                router.push('/dashboard');
+                router.push('/');
             }
         } catch (err) {
             console.error(err);

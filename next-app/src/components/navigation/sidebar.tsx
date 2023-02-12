@@ -127,7 +127,7 @@ export default function Sidebar() {
                 <List>
                     <SidebarStudentsHeader>
                         {
-                            open ? <h3>БАКАЛАВРИ</h3> : <h3>С</h3>
+                            open ? <h3>БАКАЛАВРИ</h3> : <h3>Б</h3>
                         }
                     </SidebarStudentsHeader>
 
@@ -241,7 +241,7 @@ export default function Sidebar() {
                 <List>
                     <SidebarStudentsHeader>
                         {
-                            open ? <h3>МАГИСТРИ</h3> : <h3>С</h3>
+                            open ? <h3>МАГИСТРИ</h3> : <h3>М</h3>
                         }
                     </SidebarStudentsHeader>
 
@@ -380,9 +380,6 @@ export default function Sidebar() {
                     ))}
                 </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                <DrawerHeader />
-            </Box>
         </Box>
     );
 }
