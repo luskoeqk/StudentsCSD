@@ -4,7 +4,10 @@ import React from 'react';
 
 // styles
 import { PageConfig } from '@/styles/PagesConfigElements';
+
+// components
 import Dashboard from '@/components/dashboard/dashboard';
+import StudentFrom from '@/components/formCRUD/StudentFrom';
 
 
 export default function Home() {
@@ -22,7 +25,8 @@ export default function Home() {
             <main>
                 <PageConfig>
                     <h1>index</h1>
-                    <Dashboard />
+                    <StudentFrom />
+                    {/* <Dashboard /> */}
                 </PageConfig>
             </main>
         </>
