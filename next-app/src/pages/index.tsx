@@ -24,7 +24,7 @@ export default function Home() {
 
             <main>
                 <PageConfig>
-                    <h1>index</h1>
+                    <br />
                     <StudentFrom />
                     {/* <Dashboard /> */}
                 </PageConfig>
