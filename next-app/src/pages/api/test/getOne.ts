@@ -12,14 +12,14 @@ export default async function getOne(req: NextApiRequest, res: NextApiResponse) 
             connectMongoDB(); // Connect to the MongoDB database
 
             const { id } = req.query;
-            const user = await Test.findById(id);
+            const student = await Test.findById(id);
 
-            if (user) {
+            if (student) {
 
-                res.status(200).json({ message: 'User found', user });
+                res.status(200).json({ message: 'Student found', student });
             } else {
 
-                res.status(404).json({ message: 'User not found' });
+                res.status(404).json({ message: 'Student not found' });
             }
         } catch (error) {
 

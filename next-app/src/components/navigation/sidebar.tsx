@@ -137,7 +137,7 @@ export default function Sidebar() {
                             justifyContent: open ? 'initial' : 'center',
                             px: 2.5,
                         }}
-                        onClick={() => router.push('/bachelors/2024')}
+                            onClick={() => router.push('/bachelors/2024')}
                         >
                             <ListItemIcon sx={{
                                 minWidth: 0,
@@ -156,7 +156,7 @@ export default function Sidebar() {
                             justifyContent: open ? 'initial' : 'center',
                             px: 2.5,
                         }}
-                        onClick={() => router.push('/bachelors/2023')}
+                            onClick={() => router.push('/bachelors/2023')}
                         >
                             <ListItemIcon sx={{
                                 minWidth: 0,
@@ -233,7 +233,11 @@ export default function Sidebar() {
                             }}>
                                 <PersonSearchIcon />
                             </ListItemIcon>
-                            <ListItemText primary={'Всички'} sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText
+                                primary={'Всички'}
+                                sx={{ opacity: open ? 1 : 0 }}
+                                onClick={() => router.push('/')}
+                            />
                         </ListItemButton>
                     </ListItem>
                 </List>

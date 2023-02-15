@@ -6,11 +6,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from "axios";
 
 // next
-import { useEffect, useState } from "react";
-
-// components
-import { StudentFormGetOne } from "./StudentFormGetOne";
-
+import React, { useEffect, useState, } from "react";
+import router from "next/router";
 
 
 const API_URL = 'http://localhost:3000/api/test/get';
@@ -30,9 +27,8 @@ export default function StudentFormGetAll() {
 
     const [studentsGetData, setStudentsGetData] = useState<Student[]>([]);
 
-    const handleUpdate = () => {
-
-        
+    const handleUpdate = (id: string) => {
+        router.push(`/StudentFormUpdateStudent?id=${id}`);
     };
 
     useEffect(() => {
@@ -55,6 +51,7 @@ export default function StudentFormGetAll() {
                             <TableCell>Факултетен номер</TableCell>
                             <TableCell>Име</TableCell>
                             <TableCell>Личен имейл</TableCell>
+                            <TableCell>_id</TableCell>
                             <TableCell>Редактиране</TableCell>
                         </TableRow>
                     </TableHead>
@@ -67,10 +64,12 @@ export default function StudentFormGetAll() {
                                     </TableCell>
                                     <TableCell>{student.name}</TableCell>
                                     <TableCell>{student.email}</TableCell>
+                                    <TableCell>{student._id}</TableCell>
                                     <TableCell>
-                                        <Button onClick={handleUpdate}>
+                                        <Button onClick={() => handleUpdate(student._id)}>
                                             <EditIcon />
                                         </Button>
+
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -78,7 +77,6 @@ export default function StudentFormGetAll() {
                     </TableBody>
                 </Table>
             </TableContainer>
-
             {/* MUI */}
 
         </div>
