@@ -8,14 +8,11 @@ import Slide from '@mui/material/Slide';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import { TransitionProps } from '@mui/material/transitions';
-// FormControl
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-
+import { ClickAwayListener } from '@mui/material';
 
 // components
 import StudentFormContent from './StudentFormContent';
+import StudentFormGetAll from './StudentFormGetAll';
 
 
 const Transition = React.forwardRef(function Transition(
@@ -39,27 +36,45 @@ function StudentFrom() {
         setOpen(false);
     };
 
+    const handleClickAway = (event: React.MouseEvent<Document>) => {
+        // Prevent the dialog from closing when the user clicks outside of it
+        if (event.target instanceof HTMLElement && event.target.closest('.MuiDialog-root')) {
+            return;
+        }
+    };
+
     return (
         <div>
             <Button variant="contained" onClick={handleClickOpen}>
                 Добави студент
             </Button>
-            <Dialog
-                open={open}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={handleClose}
-                aria-describedby="alert-dialog-slide-description"
-                fullWidth={true}
-            >
-                <DialogTitle>{"Добавяне на нов студент"}</DialogTitle>
-                <DialogContent>
-                    {/* Form */}
-                    <br />
-                    <StudentFormContent />
-                    {/* Form */}
-                </DialogContent>
-            </Dialog>
+            <ClickAwayListener onClickAway={handleClickAway}>
+                <Dialog
+                    open={open}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-describedby="alert-dialog-slide-description"
+                    fullWidth={true}
+                >
+                    <DialogTitle>{"Добавяне на нов студент"}</DialogTitle>
+                    <DialogContent>
+                        <Button
+                            onClick={handleClose}
+                        >Затвори без запазване</Button>
+                        {/* Form */}
+                        <br />
+                        <StudentFormContent />
+                        {/* Form */}
+
+
+                    </DialogContent>
+                </Dialog>
+            </ClickAwayListener>
+
+            {/* All students */}
+            <StudentFormGetAll />
+            {/* All students */}
         </div>
     );
 }

@@ -356,28 +356,6 @@ export default function Sidebar() {
                             open ? <h3>ДРУГИ</h3> : <h3>Д</h3>
                         }
                     </SidebarStudentsHeader>
-                    {['app1', ].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
                 </List>
             </Drawer>
         </Box>

@@ -10,7 +10,7 @@ import Test from 'models/testModel/testModel';
 
 export default async function addTest(req, res) {
 
-    const { name, email } = req.body;
+    const { facultyNumber, name, email } = req.body;
 
     connectMongoDB();
 

@@ -3,12 +3,16 @@ import { Schema, model, models } from 'mongoose';
 
 const testSchema = new Schema({
 
+    facultyNumber: {
+        type: 'string',
+        unique: true,
+    },
+
     name: String,
 
     email: {
-        type: String,
-        required: true,
-        unique: true,
+        type: 'string',
+        unique: false,
     },
 
 });

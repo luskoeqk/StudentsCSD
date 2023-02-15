@@ -4,6 +4,10 @@ import { useState } from "react";
 // axios
 import axios from "axios";
 
+// Material Ui
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 
 const API_URL = 'http://localhost:3000/api/test/add';
 
@@ -12,16 +16,18 @@ export default function StudentFormContent() {
 
     const [postData, setPostData] = useState({ name: "", email: "" });
 
+    const [facultyNumber, setFacultyNumber] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(`Name: ${name} Email: ${email}`);
+        console.log(`Faculty Number: ${facultyNumber} Name: ${name} Email: ${email}`);
 
 
         axios
             .post(API_URL, {
+                facultyNumber: facultyNumber,
                 name: name,
                 email: email,
             })
@@ -29,7 +35,8 @@ export default function StudentFormContent() {
                 console.log("Post created:", res.data);
             })
             .catch((err) => {
-                console.error("Error:", err);
+                console.error("Error durging writing");
+                console.log("Error:", err);
             })
     };
 
@@ -37,24 +44,31 @@ export default function StudentFormContent() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <TextField
+                    margin="normal"
+                    label="Факултетен номер"
+                    onChange={(e) => setFacultyNumber(e.target.value)}
+                />
+                <TextField
+                    fullWidth
+                    margin="normal"
+                    label="Име"
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <TextField
+                    margin="normal"
+                    label="Личен имейл"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
                 <div>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Name"
-                    />
-                </div>
-                <div>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email"
-                    />
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        Добави студент
+                    </Button>
                 </div>
             </form>
         </div>
