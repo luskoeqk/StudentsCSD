@@ -1,5 +1,5 @@
 // Material Ui
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 
 // axios
@@ -8,6 +8,8 @@ import axios from "axios";
 // next
 import { useEffect, useState } from "react";
 
+// components
+import { StudentFormGetOne } from "./StudentFormGetOne";
 
 
 
@@ -26,8 +28,12 @@ interface Student {
 
 export default function StudentFormGetAll() {
 
-    const [studentsGetData, setStudentsGetData] = useState<Student[]>([])
+    const [studentsGetData, setStudentsGetData] = useState<Student[]>([]);
 
+    const handleUpdate = () => {
+
+        
+    };
 
     useEffect(() => {
         axios.get<Student[]>(API_URL)
@@ -41,7 +47,7 @@ export default function StudentFormGetAll() {
 
             {/* MUI */}
             <TableContainer component={Paper}>
-                <Table sx={{  }} aria-label="table">
+                <Table sx={{}} aria-label="table">
                     <TableHead style={{
                         color: 'red'
                     }}>
@@ -61,7 +67,11 @@ export default function StudentFormGetAll() {
                                     </TableCell>
                                     <TableCell>{student.name}</TableCell>
                                     <TableCell>{student.email}</TableCell>
-                                    <TableCell><EditIcon /></TableCell>
+                                    <TableCell>
+                                        <Button onClick={handleUpdate}>
+                                            <EditIcon />
+                                        </Button>
+                                    </TableCell>
                                 </TableRow>
                             ))
                         }
