@@ -220,7 +220,10 @@ export default function Sidebar() {
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItem
+                        onClick={() => router.push('/')}
+                        disablePadding sx={{ display: 'block' }}
+                    >
                         <ListItemButton sx={{
                             minHeight: 48,
                             justifyContent: open ? 'initial' : 'center',
@@ -236,7 +239,6 @@ export default function Sidebar() {
                             <ListItemText
                                 primary={'Всички'}
                                 sx={{ opacity: open ? 1 : 0 }}
-                                onClick={() => router.push('/')}
                             />
                         </ListItemButton>
                     </ListItem>

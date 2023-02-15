@@ -30,6 +30,7 @@ function CustomPagination() {
     );
 }
 
+
 export default function _2023() {
     const { data } = useDemoData({
         dataSet: 'Commodity',
