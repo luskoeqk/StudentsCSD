@@ -6,13 +6,17 @@ const testSchema = new Schema({
     facultyNumber: {
         type: 'string',
         unique: true,
+        required: false
     },
 
-    name: String,
+    name: {
+        type: 'string',
+        required: false
+    },
 
     email: {
         type: 'string',
-        unique: false,
+        required: false
     },
 
 });

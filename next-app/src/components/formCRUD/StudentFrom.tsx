@@ -62,9 +62,10 @@ function StudentFrom() {
                         <Button
                             onClick={handleClose}
                         >Затвори без запазване</Button>
+
                         {/* Form */}
                         <br />
-                        <StudentFormContent />
+                        <StudentFormContent handleClose={handleClose} />
                         {/* Form */}
 
 

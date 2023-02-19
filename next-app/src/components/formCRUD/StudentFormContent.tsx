@@ -12,9 +12,12 @@ import TextField from '@mui/material/TextField';
 const API_URL = 'http://localhost:3000/api/test/add';
 
 
-export default function StudentFormContent() {
+interface IHandleClose {
+    handleClose: () => void;
+}
 
-    const [postData, setPostData] = useState({ name: "", email: "" });
+export default function StudentFormContent(props: IHandleClose) {
+
 
     const [facultyNumber, setFacultyNumber] = useState("");
     const [name, setName] = useState("");
@@ -33,6 +36,7 @@ export default function StudentFormContent() {
             })
             .then((res) => {
                 console.log("Post created:", res.data);
+                props.handleClose();            // close the dialog window on success
             })
             .catch((err) => {
                 console.error("Error durging writing");

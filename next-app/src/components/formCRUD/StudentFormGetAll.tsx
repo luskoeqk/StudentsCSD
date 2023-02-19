@@ -42,48 +42,10 @@ export default function StudentFormGetAll() {
         <div>
             <div><h1>Студенти - Бакалаври/Магистри КСК</h1></div>
 
-            {/* MUI */}
-            {/* <TableContainer component={Paper}>
-                <Table sx={{}} aria-label="table">
-                    <TableHead style={{
-                        color: 'red'
-                    }}>
-                        <TableRow>
-                            <TableCell>Факултетен номер</TableCell>
-                            <TableCell>Име</TableCell>
-                            <TableCell>Личен имейл</TableCell>
-                            <TableCell>_id</TableCell>
-                            <TableCell>Редактиране</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {
-                            studentsGetData.map((student) => (
-                                <TableRow hover key={student._id}>
-                                    <TableCell component="th" scope="row">
-                                        {student.facultyNumber}
-                                    </TableCell>
-                                    <TableCell>{student.name}</TableCell>
-                                    <TableCell>{student.email}</TableCell>
-                                    <TableCell>{student._id}</TableCell>
-                                    <TableCell>
-                                        <Button onClick={() => handleUpdate(student._id)}>
-                                            <EditIcon />
-                                        </Button>
-
-                                    </TableCell>
-                                </TableRow>
-                            ))
-                        }
-                    </TableBody>
-                </Table>
-            </TableContainer> */}
-            {/* MUI */}
-
             {/* MUI NEW */}
 
             <Paper sx={{ width: '99%', overflow: 'hidden', height: '100%' }}>
-                <TableContainer sx={{ maxHeight: '90vh'}}>
+                <TableContainer sx={{ maxHeight: '90vh' }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
