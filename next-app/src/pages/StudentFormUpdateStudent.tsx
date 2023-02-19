@@ -11,6 +11,7 @@ import axios from 'axios';
 // Material UI
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 
 const API_URL = 'http://localhost:3000/api/test/getOne?id=';
@@ -30,8 +31,12 @@ export default function StudentFormUpdateStudent({ id }: any) {
     useEffect(() => {
         axios.get<Student>(`${API_URL}${id}`)
             .then((res) => {
-                console.log('Received data:', res.data);
+                console.log('Received data:', res.data.student.facultyNumber);
+
                 setStudentData(res.data);
+                setFacultyNumber(res.data.student.facultyNumber);
+                setName(res.data.student.name);
+                setEmail(res.data.student.email);
             })
             .catch((error) => console.error('Error fetching data:', error));
     }, [id])
@@ -40,13 +45,6 @@ export default function StudentFormUpdateStudent({ id }: any) {
     const [facultyNumber, setFacultyNumber] = useState<string>();
     const [name, setName] = useState<string>();
     const [email, setEmail] = useState<string>();
-
-
-    const handleFacultyNumber = (event: React.ChangeEvent<HTMLInputElement>) => { setFacultyNumber(event.target.value); };
-
-    // const handleName = (event: React.ChangeEvent<HTMLInputElement>) => { setName(event.target.value); };
-
-    // const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); };
 
 
     return (
@@ -65,6 +63,41 @@ export default function StudentFormUpdateStudent({ id }: any) {
                 }
                 <pre>{JSON.stringify(studentData, null, 4)}</pre>
             </FormControl>
+
+
+            <div>
+                <form>
+                    <TextField
+                        margin="normal"
+                        label="Факултетен номер"
+                        value={facultyNumber || ''}
+                        onChange={(e) => setFacultyNumber(e.target.value)}
+                    />
+                    <TextField
+                        fullWidth
+                        margin="normal"
+                        label="Име"
+                        value={name || ''}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <TextField
+                        margin="normal"
+                        label="Личен имейл"
+                        value={email || ''}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <div>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                        >
+                            Редактирай студент
+                        </Button>
+                    </div>
+                </form>
+            </div>
 
         </PageConfig>
     )
