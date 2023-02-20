@@ -36,9 +36,9 @@ function StudentFrom() {
         setOpen(false);
     };
 
-    const handleClickAway = (event: React.MouseEvent<Document>) => {
+    const handleClickAway = (eve: React.TouchEvent<Document>) => {
         // Prevent the dialog from closing when the user clicks outside of it
-        if (event.target instanceof HTMLElement && event.target.closest('.MuiDialog-root')) {
+        if (eve.target instanceof HTMLElement && eve.target.closest('.MuiDialog-root')) {
             return;
         }
     };
@@ -67,7 +67,6 @@ function StudentFrom() {
                         <br />
                         <StudentFormContent handleClose={handleClose} />
                         {/* Form */}
-
 
                     </DialogContent>
                 </Dialog>

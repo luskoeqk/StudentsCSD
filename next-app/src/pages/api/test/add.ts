@@ -7,14 +7,14 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export default async function addTest(req: NextApiRequest, res: NextApiResponse) {
 
 
-    const { facultyNumber, name, email } = req.body;
+    const { facultyNumber, name, email, dateOfCreation, lastEditEmail } = req.body;
 
     try {
 
         connectMongoDB();
         console.log('Trying to create document');
 
-        const doc = await Test.create({ facultyNumber, name, email });
+        const doc = await Test.create({ facultyNumber, name, email, dateOfCreation, lastEditEmail });
         res.status(201).json(doc);
     } catch (err) {
 

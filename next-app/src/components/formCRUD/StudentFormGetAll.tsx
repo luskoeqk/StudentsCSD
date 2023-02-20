@@ -1,7 +1,6 @@
 // Material Ui
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
-import TablePagination from '@mui/material/TablePagination';
 
 // axios
 import axios from "axios";
@@ -19,6 +18,8 @@ interface Student {
     facultyNumber: string;
     name: string;
     email: string;
+    dateOfCreation: string;
+    lastEditEmail: string;
 }
 
 
@@ -43,7 +44,6 @@ export default function StudentFormGetAll() {
             <div><h1>Студенти - Бакалаври/Магистри КСК</h1></div>
 
             {/* MUI NEW */}
-
             <Paper sx={{ width: '99%', overflow: 'hidden', height: '100%' }}>
                 <TableContainer sx={{ maxHeight: '90vh' }}>
                     <Table stickyHeader aria-label="sticky table">
@@ -52,8 +52,10 @@ export default function StudentFormGetAll() {
                                 <TableCell>Факултетен номер</TableCell>
                                 <TableCell>Име</TableCell>
                                 <TableCell>Личен имейл</TableCell>
-                                <TableCell>_id</TableCell>
                                 <TableCell>Редактиране</TableCell>
+                                <TableCell>Последна редакция</TableCell>
+                                <TableCell>Дата на създаване</TableCell>
+                                <TableCell>_id</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -65,13 +67,10 @@ export default function StudentFormGetAll() {
                                         </TableCell>
                                         <TableCell>{student.name}</TableCell>
                                         <TableCell>{student.email}</TableCell>
+                                        <TableCell><Button onClick={() => handleUpdate(student._id)}><EditIcon /></Button></TableCell>
+                                        <TableCell>{student.lastEditEmail}</TableCell>
+                                        <TableCell>{student.dateOfCreation}</TableCell>
                                         <TableCell>{student._id}</TableCell>
-                                        <TableCell>
-                                            <Button onClick={() => handleUpdate(student._id)}>
-                                                <EditIcon />
-                                            </Button>
-
-                                        </TableCell>
                                     </TableRow>
                                 ))
                             }
@@ -79,7 +78,6 @@ export default function StudentFormGetAll() {
                     </Table>
                 </TableContainer>
             </Paper>
-
             {/* MUI NEW */}
 
 

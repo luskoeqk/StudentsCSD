@@ -13,11 +13,11 @@ export default async function updateTest(req: NextApiRequest, res: NextApiRespon
             connectMongoDB(); // Connect to the MongoDB database
             const { _id, facultyNumber, name, email } = req.body;
 
-            const updatedUser = await Test.findByIdAndUpdate(_id, { facultyNumber, name, email }, { new: true });
+            const updatedStudent = await Test.findByIdAndUpdate(_id, { facultyNumber, name, email }, { new: true });
 
-            if (updatedUser) {
+            if (updatedStudent) {
 
-                res.status(200).json({ message: 'User updated successfully', user: updatedUser });
+                res.status(200).json({ message: 'Student updated successfully', student: updatedStudent });
             } else {
 
                 res.status(404).json({ message: req.body });

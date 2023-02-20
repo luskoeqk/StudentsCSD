@@ -1,6 +1,7 @@
 // next
 import { GetServerSideProps } from 'next';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
 
 // style
 import { PageConfig } from '@/styles/PagesConfigElements';
@@ -18,55 +19,56 @@ const API_URL = 'http://localhost:3000/api/test/getOne?id=';
 
 interface Student {
     _id: string;
-    facultyNumber: string;
-    name: string;
-    email: string;
+    student: {
+        facultyNumber: string;
+        name: string;
+        email: string;
+    };
 }
 
+interface IStudentFormUpdateStudent {
+    id: string;
+    studentData: Student;
+}
 
-export default function StudentFormUpdateStudent({ id }: any) {
+export default function StudentFormUpdateStudent({ id, studentData }: IStudentFormUpdateStudent) {
 
-    const [studentData, setStudentData] = useState<any>();
+    const router = useRouter()
 
-    useEffect(() => {
-        axios.get<Student>(`${API_URL}${id}`)
-            .then((res) => {
-                console.log('Received data:', res.data.student.facultyNumber);
-
-                setStudentData(res.data);
-                setFacultyNumber(res.data.student.facultyNumber);
-                setName(res.data.student.name);
-                setEmail(res.data.student.email);
-            })
-            .catch((error) => console.error('Error fetching data:', error));
-    }, [id])
-
-
-    const [facultyNumber, setFacultyNumber] = useState<string>();
+    const [facultyNumber, setFacultyNumber] = useState<string>(studentData.student.facultyNumber);
     const [name, setName] = useState<string>();
     const [email, setEmail] = useState<string>();
 
+    const handleUpdateSubmit = async () => {
+
+        try {
+
+            const updatedStudent = {
+                _id: studentData._id, student: {
+                    facultyNumber,
+                    name,
+                    email
+                }
+            };
+
+            const res = await axios.patch(API_URL, updatedStudent);
+            console.log(res.data); // log the updated student record from the API
+            router.push('/')
+        } catch (error) {
+            console.error('Error updating student:', error);
+        }
+    };
 
     return (
         <PageConfig>
             <div>Form to edit student with ID {id}</div>
 
-            <FormControl>
-                {
-                    studentData ? (
-                        <div>
-                            <p>{studentData.student.facultyNumber}</p>
-                            <p>{studentData.student.name}</p>
-                            <p>{studentData.student.email}</p>
-                        </div>
-                    ) : <p>Loading...</p>
-                }
-                <pre>{JSON.stringify(studentData, null, 4)}</pre>
-            </FormControl>
-
-
             <div>
-                <form>
+                <pre>{JSON.stringify(studentData, null, 4)}</pre>
+            </div>
+
+            <FormControl>
+                <form onSubmit={handleUpdateSubmit}>
                     <TextField
                         margin="normal"
                         label="Факултетен номер"
@@ -86,18 +88,16 @@ export default function StudentFormUpdateStudent({ id }: any) {
                         value={email || ''}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <div>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                        >
-                            Редактирай студент
-                        </Button>
-                    </div>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        Редактирай студент
+                    </Button>
                 </form>
-            </div>
+            </FormControl>
 
         </PageConfig>
     )
@@ -109,7 +109,29 @@ export const getServerSideProps: GetServerSideProps<any> = async (context) => {
     // Fetch the data to be edited from the API
     const { id } = context.query;
 
+    // Make sure id is defined
+    if (!id) {
+        return {
+            notFound: true,
+        };
+    }
+
+    // Fetch student data from the API
+    const res = await axios.get<Student>(`${API_URL}${id}`);
+    const studentData = res.data;
+
+    // Return not found if there's no student data
+    if (!studentData) {
+        return {
+            notFound: true,
+        };
+    }
+
+
     return {
-        props: { id },
+        props: {
+            id,
+            studentData
+        },
     };
 }

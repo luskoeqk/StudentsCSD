@@ -19,6 +19,16 @@ const testSchema = new Schema({
         required: false
     },
 
+    dateOfCreation: {
+        type: 'string',
+        required: true
+    },
+
+    lastEditEmail: {
+        type: 'string',
+        required: true
+    }
+
 });
 
 
