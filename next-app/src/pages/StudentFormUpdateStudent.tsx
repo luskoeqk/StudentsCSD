@@ -36,8 +36,8 @@ export default function StudentFormUpdateStudent({ id, studentData }: IStudentFo
     const router = useRouter()
 
     const [facultyNumber, setFacultyNumber] = useState<string>(studentData.student.facultyNumber);
-    const [name, setName] = useState<string>();
-    const [email, setEmail] = useState<string>();
+    const [name, setName] = useState<string>(studentData.student.name);
+    const [email, setEmail] = useState<string>(studentData.student.email);
 
     const handleUpdateSubmit = async () => {
 
