@@ -6,7 +6,6 @@ import React from 'react';
 import { PageConfig } from '@/styles/PagesConfigElements';
 
 // components
-import Dashboard from '@/components/dashboard/dashboard';
 import StudentFrom from '@/components/formCRUD/StudentFrom';
 
 
@@ -26,7 +25,6 @@ export default function Home() {
                 <PageConfig>
                     <br />
                     <StudentFrom />
-                    {/* <Dashboard /> */}
                 </PageConfig>
             </main>
         </>

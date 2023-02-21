@@ -36,7 +36,7 @@ function StudentFrom() {
         setOpen(false);
     };
 
-    const handleClickAway = (eve: React.TouchEvent<Document>) => {
+    const handleClickAway = (eve: any) => {
         // Prevent the dialog from closing when the user clicks outside of it
         if (eve.target instanceof HTMLElement && eve.target.closest('.MuiDialog-root')) {
             return;
