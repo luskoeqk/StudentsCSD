@@ -9,12 +9,14 @@ import Sidebar from '@/components/navigation/sidebar';
 // react
 import React from 'react';
 
-// auth
-import { AuthContextProvider } from '../context/AuthContext';
-import ProtectedRoute from '@/context/ProtectedRoutes';
+// Context
+import { AuthContextProvider } from '../context/AuthContext';       // auth
+import ProtectedRoute from '@/context/ProtectedRoutes';             // protected routes
+// import { WebSocketContextProvider } from '@/context/WebSocketContext';          // web socket for table refresh
 
 // component
 import SignIn from '@/components/SignIn';
+
 
 
 export default function App({ Component, pageProps, ...appProps }: AppProps) {
@@ -32,9 +34,11 @@ export default function App({ Component, pageProps, ...appProps }: AppProps) {
     return (
         <AuthContextProvider>
             <ProtectedRoute>
-                <Header />
-                <Sidebar />
-                <Component {...pageProps} />
+                {/* <WebSocketContextProvider> */}
+                    <Header />
+                    <Sidebar />
+                    <Component {...pageProps} />
+                {/* </WebSocketContextProvider> */}
             </ProtectedRoute>
         </AuthContextProvider>
     )

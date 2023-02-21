@@ -22,7 +22,7 @@ export default function Header() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 // User is signed in
-                console.log(user)
+                // console.log(user)
                 setUser(user.email);    // email
             } else {
                 // User is signed out

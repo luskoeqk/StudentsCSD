@@ -1,5 +1,5 @@
 // react
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 // axios
 import axios from "axios";
@@ -12,6 +12,13 @@ import TextField from '@mui/material/TextField';
 import { auth } from "../../../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
+// auth
+import { useAuth } from "@/context/AuthContext";
+
+// WebSocket
+// import WebSocketContext from "@/context/WebSocketContext";
+
+
 const API_URL = 'http://localhost:3000/api/test/add';
 
 
@@ -20,28 +27,17 @@ interface IHandleClose {
 }
 
 export default function StudentFormContent(props: IHandleClose) {
-
+    
+    
+    const { user } = useAuth();                                       // get user email
     const [errorAdd, setErrorAdd] = useState(null);                   // error on adding
 
     const [facultyNumber, setFacultyNumber] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [lastEditEmail, setLastEditEmail] = useState<string | null>(null);
-    const currentDate = new Date();
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setLastEditEmail(user.email);
-            } else {
-                console.log('User is not signed in');
-                console.log(user) 
-            }
-        });
-    }, [])
 
     // format the date - dd.mm.year clock
-    const formattedDate = currentDate.toLocaleString("bg-BG", {
+    const formattedDate = new Date().toLocaleString("bg-BG", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
@@ -53,15 +49,16 @@ export default function StudentFormContent(props: IHandleClose) {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        console.log(`Faculty Number: ${facultyNumber} Name: ${name} Email: ${email} Date: ${formattedDate} Last Edit: ${lastEditEmail}`);
+        console.log(`Faculty Number: ${facultyNumber} Name: ${name} Email: ${email} DateOfCreation: ${formattedDate} Last Edit: ${user.email}`);
 
         axios
             .post(API_URL, {
                 facultyNumber: facultyNumber,
                 name: name,
                 email: email,
+                lastEditEmail: user.email,
+                lastEditDate: formattedDate,
                 dateOfCreation: formattedDate,
-                lastEditEmail: lastEditEmail,
             })
             .then((res) => {
 
@@ -73,8 +70,8 @@ export default function StudentFormContent(props: IHandleClose) {
 
                 alert("Error durging writing");
                 console.error("Error durging writing");
-                console.log("Error:", err);
                 setErrorAdd(err);
+                console.log("Error:", err);
             })
     };
 

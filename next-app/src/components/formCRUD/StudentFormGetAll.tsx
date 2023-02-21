@@ -20,12 +20,14 @@ interface Student {
     email: string;
     dateOfCreation: string;
     lastEditEmail: string;
+    lastEditDate: string;
 }
 
 
 
 
 export default function StudentFormGetAll() {
+
 
     const [studentsGetData, setStudentsGetData] = useState<Student[]>([]);
 
@@ -45,7 +47,7 @@ export default function StudentFormGetAll() {
 
             {/* MUI NEW */}
             <Paper sx={{ width: '99%', overflow: 'hidden', height: '100%' }}>
-                <TableContainer sx={{ maxHeight: '90vh' }}>
+                <TableContainer sx={{}}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
@@ -53,7 +55,8 @@ export default function StudentFormGetAll() {
                                 <TableCell>Име</TableCell>
                                 <TableCell>Личен имейл</TableCell>
                                 <TableCell>Редактиране</TableCell>
-                                <TableCell>Последна редакция</TableCell>
+                                <TableCell>Последна редакция(имейл)</TableCell>
+                                <TableCell>Последна редакция(дата)</TableCell>
                                 <TableCell>Дата на създаване</TableCell>
                                 <TableCell>_id</TableCell>
                             </TableRow>
@@ -69,6 +72,7 @@ export default function StudentFormGetAll() {
                                         <TableCell>{student.email}</TableCell>
                                         <TableCell><Button onClick={() => handleUpdate(student._id)}><EditIcon /></Button></TableCell>
                                         <TableCell>{student.lastEditEmail}</TableCell>
+                                        <TableCell>{student.lastEditDate}</TableCell>
                                         <TableCell>{student.dateOfCreation}</TableCell>
                                         <TableCell>{student._id}</TableCell>
                                     </TableRow>

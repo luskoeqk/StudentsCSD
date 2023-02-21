@@ -19,6 +19,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/hooks/auth.ts", "src/pages/api/test/add.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/hooks/auth.ts", "src/pages/api/test/add.js", "src/context/WebSocketContext.js"],
   "exclude": ["node_modules"]
 }

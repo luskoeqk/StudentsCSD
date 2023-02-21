@@ -27,7 +27,12 @@ const testSchema = new Schema({
     lastEditEmail: {
         type: 'string',
         required: true
-    }
+    },
+
+    lastEditDate: {
+        type: 'string',
+        required: true
+    },
 
 });
 

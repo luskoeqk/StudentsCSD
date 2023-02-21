@@ -10,10 +10,10 @@ export default async function updateTest(req: NextApiRequest, res: NextApiRespon
 
         try {
 
-            connectMongoDB(); // Connect to the MongoDB database
-            const { _id, facultyNumber, name, email } = req.body;
+            connectMongoDB();                                               // Connect to the MongoDB database
+            const { _id, facultyNumber, name, email, lastEditEmail, lastEditDate } = req.body;
 
-            const updatedStudent = await Test.findByIdAndUpdate(_id, { facultyNumber, name, email }, { new: true });
+            const updatedStudent = await Test.findByIdAndUpdate(_id, { facultyNumber, name, email, lastEditEmail, lastEditDate }, { new: true });
 
             if (updatedStudent) {
 
