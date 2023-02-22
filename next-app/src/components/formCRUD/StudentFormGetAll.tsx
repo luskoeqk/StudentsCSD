@@ -41,6 +41,14 @@ export default function StudentFormGetAll() {
     // searchbar
     const [searchQuery, setSearchQuery] = useState('');
 
+    // change color of selected row
+    const [selected, setSelected] = useState<string | null>(null);
+    const handleClickSelected = (id: string) => {
+        setSelected(id);
+    };
+    const rowStyle =  (id: string) =>  ({
+        backgroundColor: id === selected ? "lightgray" : "white",
+    })
 
     useEffect(() => {
         axios.get<Student[]>(API_URL)
@@ -53,7 +61,7 @@ export default function StudentFormGetAll() {
             <div><h1>Студенти - Бакалаври/Магистри КСК</h1></div>
 
             {/* MUI NEW */}
-            <Paper sx={{ width: '99%', overflow: 'hidden', height: '100%' }}>
+            <Paper sx={{ overflow: 'hidden', height: '100%' }}>
                 <TableContainer sx={{ m: 2 }}>
 
                     {/* searchbar */}
@@ -95,7 +103,7 @@ export default function StudentFormGetAll() {
                                         return false;
                                     })
                                     .map((student) => (
-                                        <TableRow hover key={student._id}>
+                                        <TableRow hover key={student._id} style={rowStyle(student._id)} onClick={() => handleClickSelected(student._id)}>
                                             <TableCell component="th" scope="row">
                                                 {student.facultyNumber}
                                             </TableCell>

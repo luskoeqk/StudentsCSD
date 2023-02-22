@@ -26,7 +26,7 @@ const theme = createTheme();
 
 export default function SignIn() {
 
-    const { user, login, isAuthenticated } = useAuth();
+    const { login, isAuthenticated } = useAuth();
 
     const router = useRouter()
 
@@ -38,8 +38,8 @@ export default function SignIn() {
         if (isAuthenticated()) {
             router.push('/');
         }
-    }, []);
-    
+    }, [isAuthenticated, router]);
+
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
