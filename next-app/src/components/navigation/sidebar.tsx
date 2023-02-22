@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useRouter } from 'next/router';
 
 // Material UI
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import { styled, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -13,18 +13,16 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import IconButton from '@mui/material/IconButton';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 // user menu search
 import PersonIcon from '@mui/icons-material/Person';
 import Person2Icon from '@mui/icons-material/Person2';
 import Person3Icon from '@mui/icons-material/Person3';
 import Person4Icon from '@mui/icons-material/Person4';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 // styles
 import { SidebarStudentsHeader } from '@/styles/LayoutElements';
@@ -105,8 +103,6 @@ export default function Sidebar() {
 
     const router = useRouter()
 
-    const theme = useTheme();
-
     const [open, setOpen] = React.useState(false);
 
     const handleDrawerClose = () => {
@@ -120,11 +116,39 @@ export default function Sidebar() {
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        <MenuOpenIcon />
                     </IconButton>
                 </DrawerHeader>
 
                 <List>
+
+                    <SidebarStudentsHeader>
+                            {
+                                open ? <h3>ВСИЧКИ</h3> : <h3>В</h3>
+                            }
+                    </SidebarStudentsHeader>
+
+                    <ListItem disablePadding sx={{ display: 'block' }}>
+                        <ListItemButton sx={{
+                            minHeight: 48,
+                            justifyContent: open ? 'initial' : 'center',
+                            px: 2.5,
+                        }}
+                            onClick={() => router.push('/')}
+                        >
+                            <ListItemIcon sx={{
+                                minWidth: 0,
+                                mr: open ? 3 : 'auto',
+                                justifyContent: 'center',
+                            }}>
+                                <GroupsIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Всички студенти'} sx={{ opacity: open ? 1 : 0 }} />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <Divider />
+
                     <SidebarStudentsHeader>
                         {
                             open ? <h3>БАКАЛАВРИ</h3> : <h3>Б</h3>
@@ -144,7 +168,7 @@ export default function Sidebar() {
                                 mr: open ? 3 : 'auto',
                                 justifyContent: 'center',
                             }}>
-                                <PersonIcon />
+                                <Person4Icon />
                             </ListItemIcon>
                             <ListItemText primary={'2024'} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
@@ -203,23 +227,6 @@ export default function Sidebar() {
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                                <Person4Icon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2020'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
                     <ListItem
                         onClick={() => router.push('/')}
                         disablePadding sx={{ display: 'block' }}
@@ -237,7 +244,7 @@ export default function Sidebar() {
                                 <PersonSearchIcon />
                             </ListItemIcon>
                             <ListItemText
-                                primary={'Всички'}
+                                primary={'Всички бакалаври'}
                                 sx={{ opacity: open ? 1 : 0 }}
                             />
                         </ListItemButton>
@@ -262,7 +269,7 @@ export default function Sidebar() {
                                 mr: open ? 3 : 'auto',
                                 justifyContent: 'center',
                             }}>
-                                <PersonIcon />
+                                <Person4Icon />
                             </ListItemIcon>
                             <ListItemText primary={'2024'} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
@@ -330,38 +337,14 @@ export default function Sidebar() {
                                 mr: open ? 3 : 'auto',
                                 justifyContent: 'center',
                             }}>
-                                <Person4Icon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2020'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
                                 <PersonSearchIcon />
                             </ListItemIcon>
-                            <ListItemText primary={'Всички'} sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary={'Всички магистри'} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
-                </List>
 
-                <Divider />
+                    <Divider />
 
-                <List>
-                    <SidebarStudentsHeader>
-                        {
-                            open ? <h3>ДРУГИ</h3> : <h3>Д</h3>
-                        }
-                    </SidebarStudentsHeader>
                 </List>
             </Drawer>
         </Box>

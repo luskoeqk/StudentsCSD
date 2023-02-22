@@ -1,6 +1,9 @@
 // Material Ui
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import TextField from "@mui/material/TextField";
 
 // axios
 import axios from "axios";
@@ -29,11 +32,15 @@ interface Student {
 export default function StudentFormGetAll() {
 
 
-    const [studentsGetData, setStudentsGetData] = useState<Student[]>([]);
-
     const handleUpdate = (id: string) => {
         router.push(`/StudentFormUpdateStudent?id=${id}`);
     };
+
+    const [studentsGetData, setStudentsGetData] = useState<Student[]>([]);
+
+    // searchbar
+    const [searchQuery, setSearchQuery] = useState('');
+
 
     useEffect(() => {
         axios.get<Student[]>(API_URL)
@@ -47,7 +54,20 @@ export default function StudentFormGetAll() {
 
             {/* MUI NEW */}
             <Paper sx={{ width: '99%', overflow: 'hidden', height: '100%' }}>
-                <TableContainer sx={{}}>
+                <TableContainer sx={{ m: 2 }}>
+
+                    {/* searchbar */}
+                    <TextField
+                        label="Търсене във всички полета"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    {/* searchbar */}
+
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
@@ -63,20 +83,31 @@ export default function StudentFormGetAll() {
                         </TableHead>
                         <TableBody>
                             {
-                                studentsGetData.map((student) => (
-                                    <TableRow hover key={student._id}>
-                                        <TableCell component="th" scope="row">
-                                            {student.facultyNumber}
-                                        </TableCell>
-                                        <TableCell>{student.name}</TableCell>
-                                        <TableCell>{student.email}</TableCell>
-                                        <TableCell><Button onClick={() => handleUpdate(student._id)}><EditIcon /></Button></TableCell>
-                                        <TableCell>{student.lastEditEmail}</TableCell>
-                                        <TableCell>{student.lastEditDate}</TableCell>
-                                        <TableCell>{student.dateOfCreation}</TableCell>
-                                        <TableCell>{student._id}</TableCell>
-                                    </TableRow>
-                                ))
+                                studentsGetData
+                                    .filter((student) => {
+                                        const fields = Object.values(student);
+                                        for (let i = 0; i < fields.length; i++) {
+                                            const field = fields[i];
+                                            if (typeof field === 'string' && field.toLowerCase().includes(searchQuery.toLowerCase())) {
+                                                return true;
+                                            }
+                                        }
+                                        return false;
+                                    })
+                                    .map((student) => (
+                                        <TableRow hover key={student._id}>
+                                            <TableCell component="th" scope="row">
+                                                {student.facultyNumber}
+                                            </TableCell>
+                                            <TableCell>{student.name}</TableCell>
+                                            <TableCell>{student.email}</TableCell>
+                                            <TableCell align="center"><Button onClick={() => handleUpdate(student._id)}><EditIcon /></Button></TableCell>
+                                            <TableCell>{student.lastEditEmail}</TableCell>
+                                            <TableCell>{student.lastEditDate}</TableCell>
+                                            <TableCell>{student.dateOfCreation}</TableCell>
+                                            <TableCell>{student._id}</TableCell>
+                                        </TableRow>
+                                    ))
                             }
                         </TableBody>
                     </Table>

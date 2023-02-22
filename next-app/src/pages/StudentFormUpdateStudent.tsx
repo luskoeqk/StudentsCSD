@@ -88,11 +88,12 @@ export default function StudentFormUpdateStudent({ id, studentData }: IStudentFo
 
     return (
         <PageConfig>
-            <div>Form to edit student with ID {id}</div>
 
-            <div>
-                <pre>{JSON.stringify(studentData, null, 4)}</pre>
-            </div>
+            <br />
+
+            <div>Редактирате студент с идентификатор: {id}</div>
+
+            <hr />
 
             <FormControl>
                 <TextField
