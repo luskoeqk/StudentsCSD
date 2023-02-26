@@ -12,8 +12,7 @@ export default async function getTest(req: NextApiRequest, res: NextApiResponse)
         connectMongoDB();
         console.log('getting docs for Student Bachelors...');
 
-        const allDocs = await Student.find();
-        // const allDocs = await Test.find().sort({ dateOfCreation: -1 });
+        const allDocs = await Student.find().sort({ dateOfCreation: -1 });
 
         console.log('Student Bachelors -> found them');
         res.status(200).json(allDocs);

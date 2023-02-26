@@ -4,6 +4,7 @@
 № на заповед за записване   -   n_of_enrollment_order
 Име Презиме Фамилия     -   names
 ЕГН     -   egn
+редактиране
 Имена на латиница   -   names_latin
 Телефон     -   phone_number
 Имейл       -   email
