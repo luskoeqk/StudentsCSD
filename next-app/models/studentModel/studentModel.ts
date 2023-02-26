@@ -36,6 +36,11 @@ const studentSchema = new Schema({
     
     length_of_study: 'string',
 
+
+
+    dateOfCreation: 'string',
+    lastEditEmail: 'string',
+    lastEditDate: 'string',
 });
 
 const Student = models.Student || model('Student', studentSchema);

@@ -18,13 +18,13 @@ import Button from '@mui/material/Button';
 import { useAuth } from '@/context/AuthContext';
 
 
-const API_URL = 'http://localhost:3000/api/test/getOne?id=';
-const API_URL_PATCH = 'http://localhost:3000/api/test/update';
+const API_URL = 'http://localhost:3000/api/students/bachelor/get_one?id=';
+const API_URL_PATCH = 'http://localhost:3000/api/students/bachelor/update';
 
 interface Student {
     _id: string;
     student: {
-        facultyNumber: string;
+        faculty_number: string;
         name: string;
         email: string;
     };
@@ -42,7 +42,7 @@ export default function StudentFormUpdateStudent({ id, studentData }: IStudentFo
     const { user } = useAuth();                                                                     // get user email
     const [errorAdd, setErrorAdd] = useState(null);                                                 // error on updating
 
-    const [facultyNumber, setFacultyNumber] = useState<string>(studentData.student.facultyNumber);
+    const [facultyNumber, setFacultyNumber] = useState<string>(studentData.student.faculty_number);
     const [name, setName] = useState<string>(studentData.student.name);
     const [email, setEmail] = useState<string>(studentData.student.email);
 
@@ -62,9 +62,8 @@ export default function StudentFormUpdateStudent({ id, studentData }: IStudentFo
 
         axios
             .patch(API_URL_PATCH, {
-
                 _id: id,
-                facultyNumber: facultyNumber,
+                faculty_number: facultyNumber,
                 name: name,
                 email: email,
                 lastEditEmail: user.email,

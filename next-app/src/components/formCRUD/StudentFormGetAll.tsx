@@ -1,8 +1,6 @@
 // Material Ui
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
 // axios
@@ -13,20 +11,18 @@ import React, { useEffect, useState, } from "react";
 import router from "next/router";
 
 
-const API_URL = 'http://localhost:3000/api/test/get';
+const API_URL = 'http://localhost:3000/api/students/bachelor/get_all';
 
 
 interface Student {
     _id: string;
-    facultyNumber: string;
+    faculty_number: string;
     name: string;
     email: string;
     dateOfCreation: string;
     lastEditEmail: string;
     lastEditDate: string;
 }
-
-
 
 
 export default function StudentFormGetAll() {
@@ -105,7 +101,7 @@ export default function StudentFormGetAll() {
                                     .map((student) => (
                                         <TableRow hover key={student._id} style={rowStyle(student._id)} onClick={() => handleClickSelected(student._id)}>
                                             <TableCell component="th" scope="row">
-                                                {student.facultyNumber}
+                                                {student.faculty_number}
                                             </TableCell>
                                             <TableCell>{student.name}</TableCell>
                                             <TableCell>{student.email}</TableCell>

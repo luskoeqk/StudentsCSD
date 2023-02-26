@@ -19,7 +19,7 @@ import { useAuth } from "@/context/AuthContext";
 // import WebSocketContext from "@/context/WebSocketContext";
 
 
-const API_URL = 'http://localhost:3000/api/test/add';
+const API_URL = 'http://localhost:3000/api/students/bachelor/add';
 
 
 interface IHandleClose {
