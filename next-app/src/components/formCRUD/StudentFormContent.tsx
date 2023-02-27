@@ -149,42 +149,43 @@ export default function StudentFormContent(props: IHandleClose) {
         <div>
             <FormControl>
                 <TextField margin="normal" label="Отличителност" onChange={(e) => setDistinction(e.target.value)}/>
-                <TextField margin="normal" label="" onChange={(e) => setFaculty_number(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setStatus_of_ksk(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setN_of_enrollment_order(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setNames(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setEgn(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setNames_latin(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setPhone_number(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setEmail(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setIn_front_of_school(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setProfessional_qualification(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setConfirmation_by_nacid(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setDesired_major(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setDesired_shape(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setLength_of_study(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setCohort_in_moodle(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setMethod_of_application(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setDate_of_initial_contact(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setMonth_of_inquiry(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setContact_source(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setPaid_ksk(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setDate_of_payment_ksk(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setComment_ksk(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setWeekly_fee_paid(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setDate_of_paid_weekly_fee(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setSubmission_period_in_adminuni(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setSchool_year(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setContract_issue_date(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setSem_Fee(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setDiscount(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setComment(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setSent_faculty_number(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setUniversity_email(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setMoodle_profile_created(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setEmail_sent_to_access_moodle(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setEntered_into_cohort(e.target.value)} />
-                <TextField margin="normal" label="" onChange={(e) => setEntered_in_admin(e.target.value)} />
+                <TextField margin="normal" label="Факултетен номер" onChange={(e) => setFaculty_number(e.target.value)} />
+                <TextField margin="normal" label="Статус на КСК" onChange={(e) => setStatus_of_ksk(e.target.value)} />
+                <TextField margin="normal" label="№ на заповед за записване" onChange={(e) => setN_of_enrollment_order(e.target.value)} />
+                <TextField margin="normal" label="Име Презиме Фамилия" onChange={(e) => setNames(e.target.value)} />
+                <TextField margin="normal" label="ЕГН" onChange={(e) => setEgn(e.target.value)} />
+                <TextField margin="normal" label="Имена на латиница" onChange={(e) => setNames_latin(e.target.value)} />
+                <TextField margin="normal" label="Телефон" onChange={(e) => setPhone_number(e.target.value)} />
+                <TextField margin="normal" label="Имейл" onChange={(e) => setEmail(e.target.value)} />
+                <TextField margin="normal" label="Пред. Учебно Заведение" onChange={(e) => setIn_front_of_school(e.target.value)} />
+                <TextField margin="normal" label="Местонахождение на преходното учебно заведение" onChange={(e) => setLocation_of_the_transitional_educationa_institution(e.target.value)} />
+                <TextField margin="normal" label="Професионално направление/ квалификация" onChange={(e) => setProfessional_qualification(e.target.value)} />
+                <TextField margin="normal" label="Потвърждение от Нацид" onChange={(e) => setConfirmation_by_nacid(e.target.value)} />
+                <TextField margin="normal" label="Желана Специалност" onChange={(e) => setDesired_major(e.target.value)} />
+                <TextField margin="normal" label="Желана форма" onChange={(e) => setDesired_shape(e.target.value)} />
+                <TextField margin="normal" label="Продължителност на обучение и дали съкращава" onChange={(e) => setLength_of_study(e.target.value)} />
+                <TextField margin="normal" label="КОХОРТ В МООДЛЕ" onChange={(e) => setCohort_in_moodle(e.target.value)} />
+                <TextField margin="normal" label="Начин на кандидатстване" onChange={(e) => setMethod_of_application(e.target.value)} />
+                <TextField margin="normal" label="Дата на първоначален контакт" onChange={(e) => setDate_of_initial_contact(e.target.value)} />
+                <TextField margin="normal" label="Месец на запитване" onChange={(e) => setMonth_of_inquiry(e.target.value)} />
+                <TextField margin="normal" label="Източник на контакт" onChange={(e) => setContact_source(e.target.value)} />
+                <TextField margin="normal" label="Заплатил КСК" onChange={(e) => setPaid_ksk(e.target.value)} />
+                <TextField margin="normal" label="Дата плащане КСК" onChange={(e) => setDate_of_payment_ksk(e.target.value)} />
+                <TextField margin="normal" label="Коментар - документи за КСК" onChange={(e) => setComment_ksk(e.target.value)} />
+                <TextField margin="normal" label="Платена сем. такса" onChange={(e) => setWeekly_fee_paid(e.target.value)} />
+                <TextField margin="normal" label="Дата на платена сем. такса" onChange={(e) => setDate_of_paid_weekly_fee(e.target.value)} />
+                <TextField margin="normal" label="Период на подаване в АдминУни" onChange={(e) => setSubmission_period_in_adminuni(e.target.value)} />
+                <TextField margin="normal" label="Учебна година" onChange={(e) => setSchool_year(e.target.value)} />
+                <TextField margin="normal" label="Дата на издаване на договор" onChange={(e) => setContract_issue_date(e.target.value)} />
+                <TextField margin="normal" label="Сем. Такса" onChange={(e) => setSem_Fee(e.target.value)} />
+                <TextField margin="normal" label="Отстъпка" onChange={(e) => setDiscount(e.target.value)} />
+                <TextField margin="normal" label="Коментар" onChange={(e) => setComment(e.target.value)} />
+                <TextField margin="normal" label="Изпратен фак. номер" onChange={(e) => setSent_faculty_number(e.target.value)} />
+                <TextField margin="normal" label="G-mail" onChange={(e) => setUniversity_email(e.target.value)} />
+                <TextField margin="normal" label="Създаден профил в Мудъл" onChange={(e) => setMoodle_profile_created(e.target.value)} />
+                <TextField margin="normal" label="Изпратен имейл за достъп до Мудъл" onChange={(e) => setEmail_sent_to_access_moodle(e.target.value)} />
+                <TextField margin="normal" label="Вкаран в Кохорт" onChange={(e) => setEntered_into_cohort(e.target.value)} />
+                <TextField margin="normal" label="Въведени в Админ " onChange={(e) => setEntered_in_admin(e.target.value)} />
 
                 <div>
                     <Button
