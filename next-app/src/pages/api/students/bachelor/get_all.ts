@@ -4,7 +4,7 @@ import Student from 'models/studentModel/studentModel';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-export default async function getTest(req: NextApiRequest, res: NextApiResponse) {
+export default async function getStudent(req: NextApiRequest, res: NextApiResponse) {
 
 
     try {

@@ -4,7 +4,7 @@ import Student from 'models/studentModel/studentModel';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-export default async function updateTest(req: NextApiRequest, res: NextApiResponse) {
+export default async function updateStudent(req: NextApiRequest, res: NextApiResponse) {
 
     if (req.method === 'PATCH') {
 

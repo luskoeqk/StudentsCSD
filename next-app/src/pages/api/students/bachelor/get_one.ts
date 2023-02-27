@@ -3,7 +3,7 @@ import Student from 'models/studentModel/studentModel';
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function getOne(req: NextApiRequest, res: NextApiResponse) {
+export default async function getOneStudent(req: NextApiRequest, res: NextApiResponse) {
 
     if (req.method === 'GET') {
 
