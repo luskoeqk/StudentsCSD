@@ -7,8 +7,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export default async function addStudent(req: NextApiRequest, res: NextApiResponse) {
 
     const {
-        faculty_number,
         distinction,
+        faculty_number,
         status_of_ksk,
         n_of_enrollment_order,
         names,
