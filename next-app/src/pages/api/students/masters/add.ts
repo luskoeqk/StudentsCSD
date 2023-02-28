@@ -101,6 +101,9 @@ export default async function addStudent(req: NextApiRequest, res: NextApiRespon
             lastEditEmail,
             lastEditDate
         });
+
+        console.log('Created document for Student Master');
+
         res.status(201).json(doc);
     } catch (err) {
 

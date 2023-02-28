@@ -48,5 +48,5 @@ const bachelorStudentSchema = new Schema({
     lastEditDate: 'string',
 });
 
-const bachelorStudent = models.Student || model('BachelorStudent', bachelorStudentSchema);
+const bachelorStudent = models.BachelorStudent || model('BachelorStudent', bachelorStudentSchema);
 export default bachelorStudent;
