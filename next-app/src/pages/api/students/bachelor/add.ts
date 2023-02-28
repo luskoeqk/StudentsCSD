@@ -1,5 +1,5 @@
 import connectMongoDB from "utils/connectMongoDB";
-import Student from "models/studentModel/studentModel";
+import bachelorStudent from "models/studentModel/BachelorStudentModel";
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -57,7 +57,7 @@ export default async function addStudent(req: NextApiRequest, res: NextApiRespon
         connectMongoDB();
         console.log('Trying to create document for Student Bachelor...');
 
-        const doc = await Student.create({
+        const doc = await bachelorStudent.create({
             distinction,
             faculty_number,
             status_of_ksk,

@@ -1,16 +1,19 @@
 // next
 import Head from 'next/head'
 import React from 'react';
+import { useRouter } from 'next/router';
 
 // styles
 import { PageConfig } from '@/styles/PagesConfigElements';
 
 // components
 import StudentFrom from '@/components/formCRUD/StudentFrom';
+import { Button } from '@mui/material';
 
 
 export default function Home() {
 
+    const router = useRouter()
 
     return (
         <>
@@ -24,7 +27,12 @@ export default function Home() {
             <main>
                 <PageConfig>
                     <br />
-                    <StudentFrom />
+                    <h1>Избери ниво на образование</h1>
+                    <Button onClick={() => router.push('bachelors')}>Бакалаври</Button>
+                    <br />
+                    <br />
+                    <br />
+                    <Button onClick={() => router.push('masters')}>Магистри</Button>
                 </PageConfig>
             </main>
         </>

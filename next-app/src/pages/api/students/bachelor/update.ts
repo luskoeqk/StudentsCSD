@@ -1,5 +1,5 @@
 import connectMongoDB from 'utils/connectMongoDB';
-import Student from 'models/studentModel/studentModel';
+import bachelorStudent from "models/studentModel/BachelorStudentModel";
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -36,7 +36,7 @@ export default async function updateStudent(req: NextApiRequest, res: NextApiRes
                 lastEditDate
             } = req.body;
 
-            const updatedStudent = await Student.findByIdAndUpdate(
+            const updatedStudent = await bachelorStudent.findByIdAndUpdate(
                 _id,
                 {
                     distinction,

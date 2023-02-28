@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
-const studentSchema = new Schema({
+const bachelorStudentSchema = new Schema({
 
     distinction: 'string',
     faculty_number: 'string',
@@ -48,5 +48,5 @@ const studentSchema = new Schema({
     lastEditDate: 'string',
 });
 
-const Student = models.Student || model('Student', studentSchema);
-export default Student;
+const bachelorStudent = models.Student || model('BachelorStudent', bachelorStudentSchema);
+export default bachelorStudent;

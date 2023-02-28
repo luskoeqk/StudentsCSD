@@ -1,5 +1,6 @@
 import connectMongoDB from 'utils/connectMongoDB';
-import Student from 'models/studentModel/studentModel';
+import bachelorStudent from "models/studentModel/BachelorStudentModel";
+
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -12,7 +13,7 @@ export default async function getOneStudent(req: NextApiRequest, res: NextApiRes
             connectMongoDB();                           // Connect to the MongoDB database
 
             const { id } = req.query;
-            const student = await Student.findById(id);
+            const student = await bachelorStudent.findById(id);
 
             if (student) {
 
