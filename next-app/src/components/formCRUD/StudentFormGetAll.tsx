@@ -72,18 +72,6 @@ export default function StudentFormGetAll() {
 
     const [studentsGetData, setStudentsGetData] = useState<Student[]>([]);
 
-    // searchbar
-    const [searchQuery, setSearchQuery] = useState('');
-
-    // change color of selected row
-    const [selected, setSelected] = useState<string | null>(null);
-    const handleClickSelected = (id: string) => {
-        setSelected(id);
-    };
-    const rowStyle = (id: string) => ({
-        backgroundColor: id === selected ? "lightgray" : "white",
-    })
-
     useEffect(() => {
         axios.get<Student[]>(API_URL)
             .then((res) => setStudentsGetData(res.data))
@@ -93,17 +81,7 @@ export default function StudentFormGetAll() {
 
     return (
         <div>
-            <div><h1>Студенти - Бакалаври/Магистри КСК</h1></div>
-
-            {isLoading ?
-                <p>Зареждам...</p>
-                
-                :
-
-                <div>
-
-                </div>
-            }
+            asd
         </div>
     )
 }
