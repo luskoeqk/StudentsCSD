@@ -1,6 +1,6 @@
 // styles
 import { PageConfig } from "@/styles/PagesConfigElements";
-import { StudentsTableCreateStyles } from "@/styles/TableElements";
+import { StudentFormCU } from "@/styles/FormElements";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
@@ -14,8 +14,7 @@ import { useRouter } from "next/router";
 
 // Material Ui
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import InputText from "@/components/inputs/InputText";
 
 
 const API_URL = 'http://localhost:3000/api/students/masters/add';
@@ -78,6 +77,8 @@ export default function createmaster() {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
+
+        console.log(distinction)
 
         axios
             .post(API_URL, {
@@ -144,80 +145,32 @@ export default function createmaster() {
     return (
         <PageConfig>
 
-            <div><h1>Редактиране на Магистър</h1></div>
+            <div><h1>Създаване на Магистър</h1></div>
 
-            <FormControl fullWidth>
-                <StudentsTableCreateStyles>
+            <StudentFormCU>
+                {/* new */}
 
-                    <TextField margin="normal" label="Отличителност" onChange={(e) => setDistinction(e.target.value)} />
-                    <TextField margin="normal" label="Факултетен номер" onChange={(e) => setFaculty_number(e.target.value)} />
-                    <FormControl margin="normal" fullWidth>
-                        <InputLabel>Отличителност</InputLabel>
-                        <Select label="Отличителност" value={status_of_ksk} onChange={(e) => setStatus_of_ksk(e.target.value)}>
-                            <MenuItem value="В процес">В процес</MenuItem><MenuItem value="Приет">Приет</MenuItem><MenuItem value="Отписан">Отписан</MenuItem><MenuItem value=""></MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField margin="normal" label="№ на заповед за записване" onChange={(e) => setN_of_enrollment_order(e.target.value)} />
-                    <TextField fullWidth margin="normal" label="Име Презиме Фамилия" onChange={(e) => setNames(e.target.value)} />
-                    <TextField margin="normal" label="ЕГН" onChange={(e) => setEgn(e.target.value)} />
-                    <TextField margin="normal" label="Имена на латиница" onChange={(e) => setNames_latin(e.target.value)} />
-                    <TextField margin="normal" label="Телефон" onChange={(e) => setPhone_number(e.target.value)} />
-                    <TextField margin="normal" label="Имейл" onChange={(e) => setEmail(e.target.value)} />
-                    <TextField margin="normal" label="Пред. Учебно Заведение" onChange={(e) => setIn_front_of_school(e.target.value)} />
-                    <TextField margin="normal" label="Местонахождение на преходното учебно заведение" onChange={(e) => setLocation_of_the_transitional_educationa_institution(e.target.value)} />
-                    <FormControl margin="normal" fullWidth>
-                        <InputLabel>Професионално направление/ квалификация</InputLabel>
-                        <Select label="Отличителност" value={professional_qualification} onChange={(e) => setProfessional_qualification(e.target.value)}>
-                            <MenuItem value="Професионален бакалавър">В Професионален бакалавър</MenuItem><MenuItem value="Професионален бакалавър - неикономист">Професионален бакалавър - неикономист</MenuItem><MenuItem value="Икономист">Икономист</MenuItem><MenuItem value="Неикономист">Неикономист</MenuItem><MenuItem value=""></MenuItem>
-                        </Select>
-                    </FormControl>
-                    <FormControl margin="normal" fullWidth>
-                        <InputLabel>Потвърждение от Нацид</InputLabel>
-                        <Select label="Отличителност" value={confirmation_by_nacid} onChange={(e) => setConfirmation_by_nacid(e.target.value)}>
-                            <MenuItem value="Да, има">Да, има</MenuItem><MenuItem value="Не, няма">Не, няма</MenuItem><MenuItem value="Не е необходимо">Не е необходимо</MenuItem><MenuItem value=""></MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField margin="normal" label="Желана Специалност" onChange={(e) => setDesired_major(e.target.value)} />
-                    <TextField margin="normal" label="Желана форма" onChange={(e) => setDesired_shape(e.target.value)} />
-                    <TextField margin="normal" label="Продължителност на обучение и дали съкращава" onChange={(e) => setLength_of_study(e.target.value)} />
-                    <TextField margin="normal" label="КОХОРТ В МООДЛЕ" onChange={(e) => setCohort_in_moodle(e.target.value)} />
-                    <TextField margin="normal" label="Начин на кандидатстване" onChange={(e) => setMethod_of_application(e.target.value)} />
-                    <TextField margin="normal" label="Дата на първоначален контакт" onChange={(e) => setDate_of_initial_contact(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setMonth_of_inquiry(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setContact_source(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setPaid_ksk(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setDate_of_payment_ksk(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setComment_ksk(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setWeekly_fee_paid(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setDate_of_paid_weekly_fee(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setSubmission_period_in_adminuni(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setSchool_year(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setContract_issue_date(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setSem_Fee(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setDiscount(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setComment(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setSent_faculty_number(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setUniversity_email(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setMoodle_profile_created(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setEmail_sent_to_access_moodle(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setEntered_into_cohort(e.target.value)} />
-                    <TextField margin="normal" label="" onChange={(e) => setEntered_in_admin(e.target.value)} />
+                <InputText label='Отличителност' onChange={(e) => setDistinction(e)}/>
 
-                </StudentsTableCreateStyles >
+                <br />
+                {/* <InputText /> */}
 
-                <div>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color={errorAdd ? "error" : "primary"}
-                        sx={{ mt: 3, mb: 2 }}
-                        onClick={handleSubmit}
-                    >
-                        Добави студент
-                    </Button>
-                </div>
-            </FormControl >
+                {/* new */}
+            </StudentFormCU>
+
+
+            <div>
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color={errorAdd ? "error" : "primary"}
+                    sx={{ mt: 3, mb: 2 }}
+                    onClick={handleSubmit}
+                >
+                    Добави студент
+                </Button>
+            </div>
         </PageConfig >
     )
 }

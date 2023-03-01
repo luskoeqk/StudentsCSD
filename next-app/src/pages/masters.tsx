@@ -5,7 +5,7 @@ import React, { useEffect, useState, } from "react";
 import axios from "axios";
 
 // components
-import StudentsTable from "@/components/studentsTable/StudentsTable";
+import MasterStudentsTable from "@/components/studentsTable/MasterStudentsTable";
 
 // styles
 import { PageConfig } from "@/styles/PagesConfigElements";
@@ -16,20 +16,23 @@ import { IStudent } from "@/interfaces/IStudent";
 
 
 const API_URL = 'http://localhost:3000/api/students/masters/get_all';
+const updateMasterUrl = '/updatemaster?id=';
+const createMasterUrl = '/createmaster';
 
 
 export default function masters() {
-
+    
     useEffect(() => {
         axios.get<IStudent[]>(API_URL)
-            .then((res) => setStudentsGetData(res.data))
+        .then((res) => setStudentsGetData(res.data))
         setIsLoading(false);
     }, [])
-
+    
     const [isLoading, setIsLoading] = useState(true);                   // wait for fetch request
     const [studentsGetData, setStudentsGetData] = useState<IStudent[]>([]);
-
-
+    
+    
+    
     return (
         <PageConfig>
             <h1>Кандидат студентски документи - Магистри</h1>
@@ -37,7 +40,11 @@ export default function masters() {
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-                <StudentsTable studentsGetData={studentsGetData} />
+                <MasterStudentsTable
+                    studentsGetData = {studentsGetData}
+                    updateMasterUrl = {updateMasterUrl}
+                    createMasterUrl = {createMasterUrl}
+                />
             )}
 
         </PageConfig>

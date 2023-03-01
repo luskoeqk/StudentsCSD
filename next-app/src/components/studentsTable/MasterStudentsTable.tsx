@@ -1,5 +1,7 @@
 // next
 import { useRouter } from "next/router";
+import Image from "next/image";
+import { useState } from "react";
 
 // styles
 import { StudentsTableAddStyles, StudentsTableStyles } from "@/styles/TableElements";
@@ -7,28 +9,27 @@ import EditIcon from "public/edit_icon.svg"
 
 // interfaces
 import { IStudent } from "@/interfaces/IStudent";
-import Image from "next/image";
 interface IStudentsTableProps {
     studentsGetData: IStudent[];
 }
 
 
 
-export default function StudentsTable({ studentsGetData }: IStudentsTableProps) {
-
+export default function MasterStudentsTable({ studentsGetData, updateMasterUrl, createMasterUrl }: IStudentsTableProps & { updateMasterUrl: string; createMasterUrl: string; }) {
 
     const router = useRouter();
 
+    const [isSelected, setIsSelected] = useState<string | null>(null);
 
     const handleUpdateStudent = (id: string) => {
-        router.push(`/StudentFormUpdateStudent?id=${id}`);
+        router.push(`${updateMasterUrl}${id}`);
     };
 
     return (
         <>
 
             <StudentsTableAddStyles>
-                <button onClick={() => router.push('/createmaster')}>
+                <button onClick={() => router.push(`${createMasterUrl}`)}>
                     Добави Студент
                 </button>
             </StudentsTableAddStyles>
@@ -82,9 +83,16 @@ export default function StudentsTable({ studentsGetData }: IStudentsTableProps) 
 
                     </tr>
                 </thead>
+                <br />
                 <tbody>
                     {studentsGetData.map((student) => (
-                        <tr key={student._id}>
+                        <tr
+                            key={student._id}
+                            onClick={() => setIsSelected(student._id)}
+                            style={{
+                                backgroundColor: isSelected === student._id ? 'lightblue' : '',
+                            }}
+                        >
                             <td>{student.distinction}</td>
                             <td>{student.faculty_number}</td>
                             <td>{student.status_of_ksk}</td>

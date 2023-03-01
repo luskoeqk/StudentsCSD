@@ -2,31 +2,43 @@ import styled from 'styled-components';
 
 
 export const StudentsTableStyles = styled.table`
+  
+  font-family: 'lato', sans-serif;
+  box-shadow: 10px 10px 8px 10px #888888;
 
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 
-    th, td {
-        text-align: left;
-        padding: 8px;
-        border: 0.5px solid black;
-    }
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
 
-    tr:nth-child(even) {
-        background-color: #F2F3F5;
-    }
+  tr:nth-child(even) {
+    background-color: #F2F3F5;
+  }
 
-    th {
-        color: white;
-        font-weight: bold;
-        background-color: #1976d2;
-    }
-      
-    tr:hover {
-        background-color: #ddd;
-    }
+  th {
+    color: white;
+    font-weight: bold;
+    background-color: #1976d2;
+  }
+    
+  tr {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    padding: 25px;
+  }
 
-    box-shadow: 10px 10px 8px 10px #888888;
+  tr:hover {
+    background-color: #ddd;
+  }
+
+  thead{
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 10px;
+  }
 `
 
 export const StudentsTableAddStyles = styled.div`
@@ -53,13 +65,4 @@ export const StudentsTableAddStyles = styled.div`
         text-shadow:0px 1px 0px #528ecc;
     }
     
-`
-
-export const StudentsTableCreateStyles = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: repeat(7, 1fr);
-    gap: 10px;
-    justify-items: center;
-    align-items: center;
 `

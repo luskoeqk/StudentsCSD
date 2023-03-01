@@ -123,9 +123,9 @@ export default function Sidebar() {
                 <List>
 
                     <SidebarStudentsHeader>
-                            {
-                                open ? <h3>ВСИЧКИ</h3> : <h3>В</h3>
-                            }
+                        {
+                            open ? <h3>ВСИЧКИ</h3> : <h3>В</h3>
+                        }
                     </SidebarStudentsHeader>
 
                     <ListItem disablePadding sx={{ display: 'block' }}>
@@ -160,61 +160,6 @@ export default function Sidebar() {
                             minHeight: 48,
                             justifyContent: open ? 'initial' : 'center',
                             px: 2.5,
-                        }}
-                            onClick={() => router.push('/bachelors/2024')}
-                        >
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                                <Person4Icon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2024'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}
-                            onClick={() => router.push('/bachelors/2023')}
-                        >
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                                <PersonIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2023'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                                <Person2Icon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2022'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
                         }}>
                             <ListItemIcon sx={{
                                 minWidth: 0,
@@ -223,12 +168,12 @@ export default function Sidebar() {
                             }}>
                                 <Person3Icon />
                             </ListItemIcon>
-                            <ListItemText primary={'2021'} sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary={'Добави бакалавър'} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
 
                     <ListItem
-                        onClick={() => router.push('/')}
+                        onClick={() => router.push('/bachelors')}
                         disablePadding sx={{ display: 'block' }}
                     >
                         <ListItemButton sx={{
@@ -258,58 +203,9 @@ export default function Sidebar() {
                         }
                     </SidebarStudentsHeader>
 
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                                <Person4Icon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2024'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                                <PersonIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2023'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}>
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                                <Person2Icon />
-                            </ListItemIcon>
-                            <ListItemText primary={'2022'} sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItem
+                        onClick={() => router.push('/createmaster')}
+                        disablePadding sx={{ display: 'block' }}>
                         <ListItemButton sx={{
                             minHeight: 48,
                             justifyContent: open ? 'initial' : 'center',
@@ -322,11 +218,13 @@ export default function Sidebar() {
                             }}>
                                 <Person3Icon />
                             </ListItemIcon>
-                            <ListItemText primary={'2021'} sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary={'Добави магисър'} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItem
+                        onClick={() => router.push('/masters')}
+                        disablePadding sx={{ display: 'block' }}>
                         <ListItemButton sx={{
                             minHeight: 48,
                             justifyContent: open ? 'initial' : 'center',
