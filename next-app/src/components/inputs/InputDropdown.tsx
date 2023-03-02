@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 
-const InputContainer = styled.div`
+const SelectContainer = styled.div`
 
     height: 80px;
     position: relative;
@@ -27,7 +27,7 @@ const InputContainer = styled.div`
         height: 20px;
         left: 20px;
         position: absolute;
-        top: -20px;
+        top: -10px;
         transform: translateY(0);
         transition: transform 200ms;
         width: 85%;
@@ -43,48 +43,48 @@ const InputContainer = styled.div`
         transform-origin: 0 50%;
         transition: transform 200ms, color 200ms;
         top: 20px;
-        font-size: 20px;
+        font-size: 21px;
         font-weight: bold;
-        width: 550px;
-
+        transform: translateY(-30px) translateX(10px) scale(0.75);
     }
 
-    .input:focus ~ .cut,
-    .input:not(:placeholder-shown) ~ .cut {
-      transform: translateY(8px);
-    }
 
-    .input:focus ~ .placeholder,
-    .input:not(:placeholder-shown) ~ .placeholder {
-      transform: translateY(-30px) translateX(10px) scale(0.75);
-    }
-
-    .input:not(:placeholder-shown) ~ .placeholder {
-      color: #808097;
-    }
 
 `;
 
-interface InputTextProps {
+interface Option {
     label: string;
-    onChange: (value: string) => void;
+    value: string;
 }
 
-export default function InputText(props: InputTextProps) {
+interface InputDropdownProps {
+    label: string;
+    onChange: (value: string) => void;
+    options: Option[];
+}
+
+
+export default function InputDropdown(props: InputDropdownProps) {
 
     const [value, setValue] = useState('');
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setValue(event.target.value);
         props.onChange(event.target.value);
     };
 
 
     return (
-        <InputContainer>
-            <input className="input" type="text" placeholder=" " onChange={handleChange}/>
+        <SelectContainer>
             <div className="cut"></div>
+            <select className="input" onChange={handleChange} value={value}>
+                {props.options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
+            </select>
             <label className="placeholder">{props.label}</label>
-        </InputContainer>
+        </SelectContainer>
     )
 }

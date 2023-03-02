@@ -57,7 +57,6 @@ export default function MasterStudentsTable({ studentsGetData, updateMasterUrl, 
                         <th>КОХОРТ В МООДЛЕ</th>
                         <th>Начин на кандидатстване</th>
                         <th>Дата на първоначален контакт</th>
-                        <th>Месец на запитване</th>
                         <th>Източник на контакт</th>
                         <th>Заплатил КСК</th>
                         <th>Дата плащане КСК</th>
@@ -83,7 +82,7 @@ export default function MasterStudentsTable({ studentsGetData, updateMasterUrl, 
 
                     </tr>
                 </thead>
-                <br />
+
                 <tbody>
                     {studentsGetData.map((student) => (
                         <tr
@@ -113,13 +112,12 @@ export default function MasterStudentsTable({ studentsGetData, updateMasterUrl, 
                             <td>{student.cohort_in_moodle}</td>
                             <td>{student.method_of_application}</td>
                             <td>{student.date_of_initial_contact}</td>
-                            <td>{student.month_of_inquiry}</td>
                             <td>{student.contact_source}</td>
                             <td>{student.paid_ksk}</td>
                             <td>{student.date_of_payment_ksk}</td>
                             <td>{student.comment_ksk}</td>
-                            <td>{student.weekly_fee_paid}</td>
-                            <td>{student.date_of_paid_weekly_fee}</td>
+                            <td>{student.sem_fee_paid}</td>
+                            <td>{student.date_of_sem_fee_paid}</td>
                             <td>{student.submission_period_in_adminuni}</td>
                             <td>{student.school_year}</td>
                             <td>{student.contract_issue_date}</td>

@@ -17,7 +17,7 @@ import { useState, useEffect } from 'react';
 export default function Header() {
 
     const [user, setUser] = useState<string | null>(null);
-        
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -52,13 +52,12 @@ export default function Header() {
                     <IconButton
                         size="large"
                         edge="start"
-                        color="inherit"
                         aria-label="menu"
                         sx={{ mr: 5 }}
                     >
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        
+
                     </Typography>
                     <div color="inherit">Здравей, {user}</div>
                     <Button color="inherit"

@@ -24,8 +24,8 @@ export interface IStudent {
     paid_ksk: string;
     date_of_payment_ksk: string;
     comment_ksk: string;
-    weekly_fee_paid: string;
-    date_of_paid_weekly_fee: string;
+    sem_fee_paid: string;
+    date_of_sem_fee_paid: string;
     submission_period_in_adminuni: string;
     school_year: string;
     contract_issue_date: string;
