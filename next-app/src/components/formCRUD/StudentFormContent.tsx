@@ -81,8 +81,6 @@ export default function StudentFormContent(props: IHandleClose) {
     const handleSubmit = (event: any) => {
         event.preventDefault();
 
-        console.log(`Faculty Number: ${faculty_number} Names: ${names} Email: ${email} DateOfCreation: ${formattedDate} Last Edit: ${user.email}`);
-
         axios
             .post(API_URL, {
                 faculty_number: faculty_number,

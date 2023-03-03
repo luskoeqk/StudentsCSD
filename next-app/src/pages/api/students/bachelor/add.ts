@@ -4,7 +4,7 @@ import bachelorStudent from "models/studentModel/BachelorStudentModel";
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-export default async function addStudent(req: NextApiRequest, res: NextApiResponse) {
+export default async function addBachelorStudent(req: NextApiRequest, res: NextApiResponse) {
 
     const {
         distinction,
@@ -102,6 +102,9 @@ export default async function addStudent(req: NextApiRequest, res: NextApiRespon
             lastEditDate
         });
         res.status(201).json(doc);
+
+        console.log('Ceated document for Student Bachelor');
+
     } catch (err) {
 
         console.error('Error while creating new bachelor document:', err);

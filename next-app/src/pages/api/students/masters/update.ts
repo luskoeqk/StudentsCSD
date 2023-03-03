@@ -66,7 +66,7 @@ export default async function updateStudent(req: NextApiRequest, res: NextApiRes
 
             if (updatedStudent) {
 
-                res.status(200).json({ message: 'Student Bachelor - updated successfully', student: updatedStudent });
+                res.status(200).json({ message: 'Student Master - updated successfully', student: updatedStudent });
             } else {
 
                 res.status(404).json({ message: req.body });
@@ -74,10 +74,10 @@ export default async function updateStudent(req: NextApiRequest, res: NextApiRes
         } catch (error) {
 
             console.error(error);
-            res.status(500).json({ message: 'Student Bachelor - Server error', error });
+            res.status(500).json({ message: 'Student Master - Server error', error });
         }
     } else {
 
-        res.status(405).json({ message: 'Student Bachelor - Method not allowed' });
+        res.status(405).json({ message: 'Student Master - Method not allowed' });
     }
 };

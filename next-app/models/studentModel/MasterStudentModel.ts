@@ -32,6 +32,8 @@ const masterStudentSchema = new Schema({
     submission_period_in_adminuni: 'string',
     school_year: 'string',
     contract_issue_date: 'string',
+    sem_fee_paid: 'string',
+    date_of_sem_fee_paid: 'string',
     sem_Fee: 'string',
     discount: 'string',
     comment: 'string',
@@ -48,5 +50,5 @@ const masterStudentSchema = new Schema({
     lastEditDate: 'string',
 });
 
-const masterStudent = models.Student || model('MasterStudent', masterStudentSchema);
+const masterStudent = models.MasterStudent || model('MasterStudent', masterStudentSchema);
 export default masterStudent;

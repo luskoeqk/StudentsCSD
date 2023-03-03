@@ -31,8 +31,8 @@ export default async function addStudent(req: NextApiRequest, res: NextApiRespon
         paid_ksk,
         date_of_payment_ksk,
         comment_ksk,
-        weekly_fee_paid,
-        date_of_paid_weekly_fee,
+        sem_fee_paid,
+        date_of_sem_fee_paid,
         submission_period_in_adminuni,
         school_year,
         contract_issue_date,
@@ -82,8 +82,8 @@ export default async function addStudent(req: NextApiRequest, res: NextApiRespon
             paid_ksk,
             date_of_payment_ksk,
             comment_ksk,
-            weekly_fee_paid,
-            date_of_paid_weekly_fee,
+            sem_fee_paid,
+            date_of_sem_fee_paid,
             submission_period_in_adminuni,
             school_year,
             contract_issue_date,
@@ -101,6 +101,9 @@ export default async function addStudent(req: NextApiRequest, res: NextApiRespon
             lastEditEmail,
             lastEditDate
         });
+
+        console.log('Created document for Student Master');
+
         res.status(201).json(doc);
     } catch (err) {
 
